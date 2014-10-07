@@ -140,18 +140,21 @@ def ex0215():
     num3 = float(input_str[2])
 
     if num1 > num2:
-        tmp = num1
-        num1 = num2
-        num2 = tmp
+        # tmp = num1
+        # num1 = num2
+        # num2 = tmp
+        num1, num2 = num2, num1
         if num3 < num1:
-            tmp = num3
-            num3 = num2
-            num2 = num1
-            num1 = tmp
+            # tmp = num3
+            # num3 = num2
+            # num2 = num1
+            # num1 = tmp
+            num1, num2, num3 = num3, num1, num2
         elif num3 < num2:
-            tmp = num3
-            num3 = num2
-            num2 = tmp
+            # tmp = num3
+            # num3 = num2
+            # num2 = tmp
+            num2, num3 = num3, num2
 
     inc_or_dec = raw_input('Sorting ====\nincreasingly (I)?\ndecreasingly(D)? ')
     if inc_or_dec.lower() == 'i':
