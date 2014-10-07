@@ -106,10 +106,34 @@ def ex0210():
             print 'done well, you input: ', anum
 
 
+def ex0211():
+    """menu-driven text applications"""
+
+    enough = False
+    procedures = ['ex0207', 'ex0208', 'ex0210']
+
+    while not enough:
+        print '\n\n======Operation Menu======\n'
+        print '(1): ex0207: loops and strings'
+        print '(2): ex0208: loops and operators'
+        print '(3): ex0210: user input with loops and conditionals'
+        print '(X): quit'
+
+        choosed = raw_input('======please choose your operation: ')
+
+        if choosed[0].lower() == 'x':
+            enough = True
+            print '\nBye-bye, have a nice day!!!'
+        else:
+            item = int(choosed[0]) - 1
+            #TODO program into specific prodedures dispatched by procedure list item. procedures[item]()
+
+
 if __name__ == '__main__':
     # test1()
     #ex0204()
     #ex0205()
     #ex0207()
     #ex0208()
-    ex0210()
+    #ex0210()
+    ex0211()
