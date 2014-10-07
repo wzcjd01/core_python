@@ -129,6 +129,36 @@ def ex0211():
             #TODO program into specific prodedures dispatched by procedure list item. procedures[item]()
 
 
+def ex0215():
+    """elementary sorting without using lists"""
+
+    input_str = raw_input('input 3 numeric: ')
+    input_str = input_str.split()
+
+    num1 = float(input_str[0])
+    num2 = float(input_str[1])
+    num3 = float(input_str[2])
+
+    if num1 > num2:
+        tmp = num1
+        num1 = num2
+        num2 = tmp
+        if num3 < num1:
+            tmp = num3
+            num3 = num2
+            num2 = num1
+            num1 = tmp
+        elif num3 < num2:
+            tmp = num3
+            num3 = num2
+            num2 = tmp
+
+    inc_or_dec = raw_input('Sorting ====\nincreasingly (I)?\ndecreasingly(D)? ')
+    if inc_or_dec.lower() == 'i':
+        print 'Sorted increasingly: ', num1, num2, num3
+    else:
+        print 'sorted decreasingly: ', num3, num2, num1
+
 if __name__ == '__main__':
     # test1()
     #ex0204()
@@ -136,4 +166,5 @@ if __name__ == '__main__':
     #ex0207()
     #ex0208()
     #ex0210()
-    ex0211()
+    #ex0211()
+    ex0215()
