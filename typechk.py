@@ -1,4 +1,4 @@
-__author__ = 'Wang Zhicheng'
+#__author__ = 'Wang Zhicheng'
 
 
 # version 1
@@ -61,8 +61,14 @@ def display_num_type(num):
     else:
         print 'not a number at all!!'
 
-display_num_type(-69)
-display_num_type(9999999999999999999999999999l)
-display_num_type(88.8)
-display_num_type(-5.2+1.9j)
-display_num_type('xxx')
+
+def _test():
+    display_num_type(-69)
+    display_num_type(9999999999999999999999999999l)
+    display_num_type(88.8)
+    display_num_type(-5.2+1.9j)
+    display_num_type('xxx')
+
+
+if __name__ == '__main__':
+    _test()

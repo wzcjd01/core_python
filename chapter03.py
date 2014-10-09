@@ -46,7 +46,9 @@ def read_text_file():
             #print eachLine.strip('\n ')
         fobj.close()
 
-if __name__ == '__main__':
+
+def _test():
+
     print "\nWhat you want to do?\n"
     print "(M)ake text file"
     print "(R)ead text file\n"
@@ -57,3 +59,6 @@ if __name__ == '__main__':
     else:
         read_text_file()
 
+
+if __name__ == '__main__':
+    _test()

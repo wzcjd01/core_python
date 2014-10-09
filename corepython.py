@@ -1,4 +1,4 @@
-__author__ = 'Wang Zhicheng'
+#__author__ = 'Wang Zhicheng'
 
 
 class FooClass(object):
