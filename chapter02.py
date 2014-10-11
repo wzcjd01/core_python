@@ -70,12 +70,11 @@ def ex0207():
 def ex0208():
     """loops and operators"""
 
-    numlist = [0, 0, 0, 0, 0]
-    astr = raw_input('please input five numerics: ')
-    alist = astr.split()
+    astr = raw_input('please input five numerics: ').split()
 
+    numlist = []
     for i in range(5):
-        numlist[i] = float(alist[i])
+        numlist.append(astr[i])
 
     # numsum the inputted numeric
     # while version
@@ -96,37 +95,32 @@ def ex0208():
 def ex0210():
     """user input with loops and conditionals"""
 
-    donewell = False
-
-    while not donewell:
-        anum = raw_input('input a number between 1 and 100: ')
-        anum = int(anum)
-        if 1 < anum < 100:
-            donewell = True
+    while True:
+        anum = raw_input('input a number between 1 and 100: ').strip()
+        if anum.isdigit() and 1 < anum < 100:
             print 'done well, you input: ', anum
+            break
 
 
 def ex0211():
     """menu-driven text applications"""
 
-    enough = False
-    procedures = ['ex0207', 'ex0208', 'ex0210']
+    procedures = {'1': ex0207, '2': ex0208, '3': ex0210}
 
-    while not enough:
+    while True:
         print '\n\n======Operation Menu======\n'
         print '(1): ex0207: loops and strings'
         print '(2): ex0208: loops and operators'
         print '(3): ex0210: user input with loops and conditionals'
         print '(X): quit'
 
-        choosed = raw_input('======please choose your operation: ')
+        choosed = raw_input('======please choose your operation: ').strip()[0].lower()
 
-        if choosed[0].lower() == 'x':
-            enough = True
+        if choosed == 'x':
             print '\nBye-bye, have a nice day!!!'
+            break
         else:
-            item = int(choosed[0]) - 1
-            #TODO program into specific prodedures dispatched by procedure list item. procedures[item]()
+            procedures[choosed]()
 
 
 def ex0215():
@@ -169,5 +163,5 @@ if __name__ == '__main__':
     #ex0207()
     #ex0208()
     #ex0210()
-    #ex0211()
-    ex0215()
+    ex0211()
+    #ex0215()
