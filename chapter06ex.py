@@ -66,9 +66,53 @@ def ex0608():
     print corepython.int_eng(i1)
 
 
+def ex0614():
+    """
+    'Rock, paper, scissors' game between you and random
+    strategy computer
+    :return:
+    """
+    import random
+
+    pr = """-------Game menu------
+        you may pick one of these hand motion:
+
+            (R)ock
+            (P)aper
+            (S)cissors
+
+        or you can (Q)uit
+
+        please pick: >> """
+
+    score = {'r': 0, 'p': 1, 's': 2}
+    while True:
+        try:
+            choice = raw_input(pr).strip()[0].lower()
+        except (EOFError, KeyboardInterrupt, IndexError):
+            choice = 'q'
+
+        if choice == 'q':
+            print "\nBye-bye"
+            break
+        else:
+            compt_choice = random.sample('rps', 1)[0]
+            print "computer's motion is: >> ", compt_choice
+
+        score_you = score[choice]
+        score_computer = score[compt_choice]
+
+        if score_computer == score_you:
+            print "tie"
+        if (score_computer - score_you) % 3 == 1:
+            print "you lose"
+        if (score_computer - score_you) % 3 == 2:
+            print "you win"
+
+
 if __name__ == '__main__':
-    print "*" * 5, "exercise 6-3 ", "*" * 5
-    ex0603()
+    # print "*" * 5, "exercise 6-3 ", "*" * 5
+    # ex0603()
 
     # print "*" * 5, "exercise 6-2 ", "*" * 5
     # ex0604()
@@ -78,3 +122,6 @@ if __name__ == '__main__':
 
     # print "*" * 5, "exercise 6-8 ", "*" * 5
     # ex0608()
+
+    print "*" * 5, "exercise 6-14 ", "*" * 5
+    ex0614()

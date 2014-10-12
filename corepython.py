@@ -227,3 +227,14 @@ def int_eng(i):
         k += 1
 
     return '-'.join(rslt)
+
+
+def atoc(s):
+    """
+
+    :param s: a string representation of a complex numbers
+    :return: complex number object represented by 's'
+    """
+    import string
+    chars = "0123456789.+-eEjJ"
+    # todo: atoc()
