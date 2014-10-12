@@ -1,4 +1,4 @@
-#__author__ = 'Wang Zhicheng'
+# __author__ = 'Wang Zhicheng'
 """
 write an unicode string to disk and read it back in for display.
 it encodes it into UTF-8 for writing to disk
@@ -9,6 +9,7 @@ _file = 'unicode.txt'
 
 _hello_out = u"Hello world\n"
 _bytes_out = _hello_out.encode(_codec)
+
 
 def example0602():
     f = open(_file, 'w')

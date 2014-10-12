@@ -1,9 +1,9 @@
-#__author__ = 'Wang Zhicheng'
+# __author__ = 'Wang Zhicheng'
 """
 check for valid Python identifiers
 """
 
-from string import  ascii_letters as _ascii_letters, digits as _digits
+from string import ascii_letters as _ascii_letters, digits as _digits
 from keyword import kwlist as _kwlist
 
 _alphas = _ascii_letters + '_'

@@ -4,7 +4,7 @@ import os
 
 
 def make_text_file():
-        # get filename
+    # get filename
     while True:
         fname = raw_input('Enter file name: ')
         if os.path.exists(fname):
@@ -43,12 +43,11 @@ def read_text_file():
     else:
         for eachLine in fobj:
             print eachLine,
-            #print eachLine.strip('\n ')
+            # print eachLine.strip('\n ')
         fobj.close()
 
 
 def _test():
-
     print "\nWhat you want to do?\n"
     print "(M)ake text file"
     print "(R)ead text file\n"

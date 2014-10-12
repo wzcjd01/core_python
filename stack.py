@@ -1,10 +1,11 @@
-#__author__ = 'Wang Zhicheng'
+# __author__ = 'Wang Zhicheng'
 """
 use lists as a stack to store and retrieve strings entered
 through menu-driven text application
 """
 
 stack = []
+
 
 def pushit():
     stack.append(raw_input("Enter new string: ").strip())
@@ -18,10 +19,11 @@ def popit():
 
 
 def viewstack():
-    print stack     # calls str() internally
+    print stack  # calls str() internally
 
 
-CMDs = {'u': pushit, 'o':popit, 'v':viewstack}
+CMDs = {'u': pushit, 'o': popit, 'v': viewstack}
+
 
 def showmenu():
     pr = """
@@ -48,6 +50,7 @@ def showmenu():
         if choice == 'q':
             break
         CMDs[choice]()
+
 
 if __name__ == '__main__':
     showmenu()

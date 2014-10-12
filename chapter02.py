@@ -156,9 +156,10 @@ def ex0215():
     else:
         print 'sorted decreasingly: ', num3, num2, num1
 
+
 if __name__ == '__main__':
     # test1()
-    #ex0204()
+    # ex0204()
     #ex0205()
     #ex0207()
     #ex0208()

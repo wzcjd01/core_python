@@ -1,5 +1,5 @@
 __author__ = 'Wang Zhicheng'
-## page 80, example 3.1
+# # page 80, example 3.1
 """
 This application prompts the user for a (nonexistent) filename,
 then has the user enter each line of that file. Finally, it
@@ -9,7 +9,6 @@ import os
 
 
 def _test():
-
     # get filename
     while True:
         fname = raw_input('Enter file name: ')
