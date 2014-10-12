@@ -110,6 +110,14 @@ def ex0614():
             print "you win"
 
 
+def ex0615():
+    print "-" * 8, 'Life in Days', "-" * 8
+    now = '10/12/2014'
+    birthday = raw_input("Enter your birthday in MM/DD/YYYY :>> ").strip()
+    print "You have survived: ", \
+        corepython.dayslapse(birthday, now), "days"
+
+
 if __name__ == '__main__':
     # print "*" * 5, "exercise 6-3 ", "*" * 5
     # ex0603()
@@ -123,5 +131,8 @@ if __name__ == '__main__':
     # print "*" * 5, "exercise 6-8 ", "*" * 5
     # ex0608()
 
-    print "*" * 5, "exercise 6-14 ", "*" * 5
-    ex0614()
+    # print "*" * 5, "exercise 6-14 ", "*" * 5
+    # ex0614()
+
+    print "*" * 5, "exercise 6-15 ", "*" * 5
+    ex0615()
