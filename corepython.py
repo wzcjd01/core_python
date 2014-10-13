@@ -240,52 +240,71 @@ def atoc(s):
     # todo: atoc()
 
 
-def dayslapse(date1, date2):
+def dayslapse(datefrom, dateto):
     """
     ex 6-15
-    :param date1: beginning date in format MM/DD/YY or MM/DD/YYYY
-    :param date2: end date in format MM/DD/YY or MM/DD/YYYY
+    :param datefrom: beginning date in format MM/DD/YY or MM/DD/YYYY
+    :param dateto: end date in format MM/DD/YY or MM/DD/YYYY
     :return: days between the two dates
     """
     import string
-    datelist1 = string.split(date1, '/')
-    datelist2 = string.split(date2, '/')
+
+    date_from = string.split(datefrom, '/')
+    date_to = string.split(dateto, '/')
 
     # ‘YY' default to be a 21st century year when YY <= '20'
-    dl1 = [int(datelist1[i]) for i in (2, 0, 1)]  # [YYYY, MM, DD]
+    dl1 = [int(date_from[i]) for i in (2, 0, 1)]  # [YYYY, MM, DD]
     # default YY: (1920, 2020]
     if dl1[0] <= 20:
         dl1[0] += 2000
-    else:
+    elif dl1[0] < 100:
         dl1[0] += 1900
 
-    dl2 = [int(datelist2[i]) for i in (2, 0, 1)]  # [YYYY, MM, DD]
+    dl2 = [int(date_to[i]) for i in (2, 0, 1)]  # [YYYY, MM, DD]
     if dl2[0] <= 20:
         dl2[0] += 2000
-    else:
+    elif dl2[0] < 100:
         dl2[0] += 1900
 
     days = 0
 
-    # fixme: 19750804 -> 20141012 14314 days, calculated wrongly as 14377
-    i = 0
-    while dl1[0] < dl2[0] and dl1[1:] <= dl2[1:]:
-        # leap day
-        dl1[0] += 1
-        days += 365
-        i += 1
-        if i // 4:
-            days += 1
-            i = 1
+    l = 0
+    while True:
+        dl1[0] += 1  # step: 1 year
+        if dl1 <= dl2:
+            days += 365
+            l += 1
+            # leap day
+            if l // 4:
+                days += 1
+                l = 0
+        else:
+            break
 
     month = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
-    while dl1[1:] < dl2[1:]:
-        days += month[dl1[1]]
-        dl1[1] += 1
+    if dl1[1:] <= dl2[1:]:  # two month within same year
+        while True:
+            dl1[1] += 1  # step: 1 month
+            if dl1[1:] <= dl2[1:]:
+                days += month[dl1[1] - 2]  # -2 = -1 -1, index pre-modified month
+            else:
+                if dl1[2] <= dl2[2]:
+                    days += dl2[2] - dl1[2]
+                else:
+                    days += dl2[2] - dl1[2] + month[dl1[1] - 2]
+                break
 
-    if dl1[1] == dl2[1]:
-        days += dl2[2] - dl1[2]
-    else:
-        days += dl2[2] - dl1[2] + month[dl1[1]]
+    else:  # two month apart less than 1yr between 2 years
+        dl2[1] += 12  # dl1[1]: month, dl2[1] + 12: month of next year
+        while True:
+            dl1[1] += 1  # step: 1 month
+            if dl1[1:] <= dl2[1:]:
+                days += month[(dl1[1] - 2) % 12]
+            else:
+                if dl1[2] <= dl2[2]:
+                    days += dl2[2] - dl1[2]
+                else:
+                    days += dl2[2] - dl1[2] + month[(dl1[1] - 2) % 12]
+                break
 
     return days

@@ -14,7 +14,7 @@ def _test():
     else:
         for eachLine in fobj:
             print eachLine,
-            #print eachLine.strip('\n ')
+            # print eachLine.strip('\n ')
         fobj.close()
 
 
