@@ -11,7 +11,7 @@ _nums = _digits
 _alphnums = _alphas + _nums
 
 print "welcome to the identifier checker v2.0"
-#print "testees must be at least 2 chars long."
+# print "testees must be at least 2 chars long."
 ainput = raw_input("Indentifier to test? ").strip()
 
 if len(ainput) > 1:
