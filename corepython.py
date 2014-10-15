@@ -248,6 +248,7 @@ def dayslapse(datefrom, dateto):
     :return: days between the two dates
     """
     import string
+<<<<<<< HEAD
 
     date_from = string.split(datefrom, '/')
     date_to = string.split(dateto, '/')
@@ -262,19 +263,51 @@ def dayslapse(datefrom, dateto):
         days -= 1
 
     leap = 0
+=======
+
+    date_from = string.split(datefrom, '/')
+    date_to = string.split(dateto, '/')
+
+    # ‘YY' default to be a 21st century year when YY <= '20'
+    dl1 = [int(date_from[i]) for i in (2, 0, 1)]  # [YYYY, MM, DD]
+    # default YY: (1920, 2020]
+    if dl1[0] <= 20:
+        dl1[0] += 2000
+    elif dl1[0] < 100:
+        dl1[0] += 1900
+
+    dl2 = [int(date_to[i]) for i in (2, 0, 1)]  # [YYYY, MM, DD]
+    if dl2[0] <= 20:
+        dl2[0] += 2000
+    elif dl2[0] < 100:
+        dl2[0] += 1900
+
+    days = 0
+
+    l = 0
+>>>>>>> 7032f7fc2c993ddf9eea2da1d09c8bca32a6ee80
     while True:
         dl1[0] += 1  # step: 1 year
         if dl1 <= dl2:
             days += 365
+<<<<<<< HEAD
             # leap day
             leap += 1
             if leap // 4:
                 days += 1
                 leap = 0
+=======
+            l += 1
+            # leap day
+            if l // 4:
+                days += 1
+                l = 0
+>>>>>>> 7032f7fc2c993ddf9eea2da1d09c8bca32a6ee80
         else:
             break
 
     month = (31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+<<<<<<< HEAD
     day1 = 0
     day2 = 0
     if dl1[1] > 1:
@@ -287,3 +320,31 @@ def dayslapse(datefrom, dateto):
     days += ((day2 + dl2[2]) - (day1 + dl1[2])) % 365
 
     return days
+=======
+    if dl1[1:] <= dl2[1:]:  # two month within same year
+        while True:
+            dl1[1] += 1  # step: 1 month
+            if dl1[1:] <= dl2[1:]:
+                days += month[dl1[1] - 2]  # -2 = -1 -1, index pre-modified month
+            else:
+                if dl1[2] <= dl2[2]:
+                    days += dl2[2] - dl1[2]
+                else:
+                    days += dl2[2] - dl1[2] + month[dl1[1] - 2]
+                break
+
+    else:  # two month apart less than 1yr between 2 years
+        dl2[1] += 12  # dl1[1]: month, dl2[1] + 12: month of next year
+        while True:
+            dl1[1] += 1  # step: 1 month
+            if dl1[1:] <= dl2[1:]:
+                days += month[(dl1[1] - 2) % 12]
+            else:
+                if dl1[2] <= dl2[2]:
+                    days += dl2[2] - dl1[2]
+                else:
+                    days += dl2[2] - dl1[2] + month[(dl1[1] - 2) % 12]
+                break
+
+    return days
+>>>>>>> 7032f7fc2c993ddf9eea2da1d09c8bca32a6ee80
