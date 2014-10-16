@@ -15,5 +15,10 @@ def showMaxFactor(num):
         print('{0:d} is prime'.format(num))
 
 
-for eachNum in range(10, 21):
-    showMaxFactor(eachNum)
+def _test():
+    for eachNum in range(10, 21):
+        showMaxFactor(eachNum)
+
+
+if __name__ == '__main__':
+    _test()
