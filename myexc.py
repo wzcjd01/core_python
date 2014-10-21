@@ -11,7 +11,6 @@ socket.connect().
 import os
 import socket
 import errno
-import types
 import tempfile
 
 
@@ -65,8 +64,8 @@ def fileArgs(fn, mode, args):
         else:
             myargs = list(args)
 
-        # alter the error string to contain the permission string constructed before
-        myargs[1] = "'%s' %s (perms: '%s')" % (mode, myargs[1], perms)
+        # alter the error string to contain the permission string
+        # constructed before
 
         myargs.append(args.filename)
 
