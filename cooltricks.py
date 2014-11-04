@@ -52,3 +52,32 @@ print max(open('cooltricks.py'), key=len)
 
 # sum the digits in an unsigned integer
 print sum(map(int, str(19873538195)))
+
+# sorted with lambda functions
+reviews = [{'rating': 4.5, 'date': '2013-03-10', 'comment': 'A++, will eat again'},
+           {'rating': 5, 'date': '2013-03-11', 'comment': 'Shut up and take my money!'},
+           {'rating': 1, 'date': '2013-03-08', 'comment': 'I want my money back'},
+           {'rating': 4, 'date': '2013-03-10', 'comment': 'Great food!'}]
+
+sorted(reviews, key=lambda review: (review['date'], review['rating']), reverse=True)
+
+# None is less than any number
+sorted([1, 2, None, 4.5, float('-Inf')])
+
+# Named subgroups in regular expressions
+import re
+m = re.match(r"(?P<first>\w+) (?P<last>\w+)", "John Smith")
+print m.groupdict()
+
+
+# Creating 'enums'
+# http://stackoverflow.com/questions/36932/how-can-i-represent-an-enum-in-python
+def enum(*sequential, **named):
+    enums = dict(zip(sequential, range(len(sequential))), **named)
+    # support for converting the values back to names
+    reverse = dict((value, key) for key, value in enums.iteritems())
+    enums['reverse_mapping'] = reverse
+    return type('Enum', (), enums)
+
+Color = enum('RED', 'GREEN', 'BLUE', CYAN=4, BLACK=5, MAGENTA=6)
+print Color.RED, Color.GREEN, Color.BLUE, Color.MAGENTA
